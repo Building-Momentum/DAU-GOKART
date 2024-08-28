@@ -5,7 +5,7 @@
 #define THROTTLE_STOP_VALUE 0
 
 #define STEER_PIN_IN 9  // These variables are set up for the Steering operation of the go kart
-#define STEER_STOP_VALUE 0
+#define STEER_STOP_VALUE 1500
 #define RIGHT_SWITCH_PIN 13
 #define LEFT_SWITCH_PIN 6
 #define STEER_SERVO_OUTPUT 5
@@ -16,8 +16,8 @@
 #define BRAKE_PIN_IN 8
 
 #define BRAKE_ENCODER_PIN A15  // These variables are setup for using the encoder that exists on the braking linear acutator
-#define BRAKE_OFF_POSITION_VALUE 15
-#define BRAKE_ON_POSITION_VALUE 0
+#define BRAKE_OFF_POSITION_VALUE 30
+#define BRAKE_ON_POSITION_VALUE 12
 #define SHAFT_LENGTH 146
 #define ENCODER_MAX 877
 #define ENCODER_MIN 30
@@ -64,6 +64,7 @@ void loop() {
   getValues();  // runs the function below that runs all the funtions that read the new input values
 
   throttleServo.write(THROTTLE_STOP_VALUE);  //sets the servo for throttle to zero to stop the kart
+  steerServo.write(STEER_STOP_VALUE);
 
   if (shaftPositionValue > BRAKE_ON_POSITION_VALUE) {  //runs and if else statement that will check if the brake linear acutator is engages on the break
     analogWrite(BRAKE_RIGHT_OUTPUT_PIN, BRAKE_SPEED);
@@ -103,10 +104,10 @@ void loop() {
     }
 
     if ((steerOutputValue < 475) && (leftSwitchValue != 0)) {  //lines 105-114 check the values from the limit switches and the input for the steering servo and sends a full speed one way or another to the steering servo
-      steerServo.write(1100);
+      steerServo.write(600);
       delay(5);
     } else if ((steerOutputValue > 600) && (rightSwitchValue != 0)) {
-      steerServo.write(1900);
+      steerServo.write(2400);
       delay(5);
     } else {
       steerServo.write(1500);
