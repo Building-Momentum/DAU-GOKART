@@ -1,3 +1,8 @@
+/* This code does stuff
+
+
+
+*/
 // this is a test
 // Declarations for use
 #define THROTTLE_PIN_IN 10  // These variables are set up for the Throttle operation of the go kart
