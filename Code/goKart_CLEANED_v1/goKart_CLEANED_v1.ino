@@ -31,14 +31,13 @@
 
 // Included Libraries
 #include <Servo.h>
-Servo throttleServo;
 #include <ezButton.h>
 
 // Global Classes/Stuctures
 ezButton limitSwitch1(RIGHT_SWITCH_PIN);
 ezButton limitSwitch2(LEFT_SWITCH_PIN);
 Servo steerServo;
-
+Servo throttleServo;
 // Global variables
 
 int brakeValue = 0, brakePositionValue = 0, shaftPositionValue = 0, throttleValue = 0,
