@@ -1,5 +1,5 @@
 /*
-  Refined code for DAU Go Kart project.
+  Refined code for DAU Go Kart project. This code is for the throttle portion of the Go Kart.
 
     -Place all Serial comms within an #ifdef/#endif pair.
     -Use defines for all non-changing values
