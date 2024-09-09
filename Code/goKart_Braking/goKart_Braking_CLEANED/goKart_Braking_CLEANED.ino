@@ -9,9 +9,6 @@
 
   Contriubutors:
     M. Pena
-    S. Entabi
-    C. Villegas
-    H. Sullivan
 
 
 */

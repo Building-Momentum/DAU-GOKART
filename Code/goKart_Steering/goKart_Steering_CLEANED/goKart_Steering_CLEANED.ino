@@ -1,9 +1,17 @@
-/* This code does stuff
+/*
+  Refined code for DAU Go Kart project. This code is for the steering portion of the Go Kart.
 
+    -Place all Serial comms within an #ifdef/#endif pair.
+    -Use defines for all non-changing values
+    -Use all caps for all #defines
 
+  Use a Mega for development
 
+  Contriubutors:
+    M. Pena
+
+    
 */
-// this is a test
 // Declarations for use
 
 #define STEER_PIN_IN 9  // These variables are set up for the Steering operation of the go kart
