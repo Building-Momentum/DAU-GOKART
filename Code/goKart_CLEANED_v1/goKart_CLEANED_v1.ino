@@ -1,9 +1,21 @@
-/* This code does stuff
+/*
+  Refined code for DAU Go Kart project. This code is for operating the entire go kart all together
 
+    -Place all Serial comms within an #ifdef/#endif pair.
+    -Use defines for all non-changing values
+    -Use all caps for all #defines
 
+  Use a Mega for development
 
+  Contriubutors:
+    M. Pena
+    S. Entabi
+    C. Villegas
+    H. Sullivan
+   
 */
-// this is a test
+
+
 // Declarations for use
 #define THROTTLE_PIN_IN 10  // These variables are set up for the Throttle operation of the go kart
 #define THROTTLE_PIN_OUT 12
