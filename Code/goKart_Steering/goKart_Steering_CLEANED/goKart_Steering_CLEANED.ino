@@ -47,14 +47,14 @@ void setup() {
 }
 
 void loop() {
-
-  limitSwitch1.loop();
-  limitSwitch2.loop();
-
-  leftSwitchValue = limitSwitch1.getState();
-  rightSwitchValue = limitSwitch2.getState();
   steerValue = pulseIn(STEER_PIN_IN, HIGH);
   steerOutputValue = map(steerValue, 2100, 1000, 0, 1000);
+  
+  limitSwitch1.loop();
+  limitSwitch2.loop();
+  leftSwitchValue = limitSwitch1.getState();
+  rightSwitchValue = limitSwitch2.getState();
+  
 
 
   if ((steerOutputValue < 475) && (leftSwitchValue != 0)) {  //lines 105-114 check the values from the limit switches and the input for the steering servo and sends a full speed one way or another to the steering servo
