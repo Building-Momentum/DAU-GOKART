@@ -57,14 +57,17 @@ void loop() {
   
 
 
-  if ((steerOutputValue < 475) && (leftSwitchValue != 0)) {  //lines 105-114 check the values from the limit switches and the input for the steering servo and sends a full speed one way or another to the steering servo
+  if ((steerOutputValue < 450) && (leftSwitchValue != 0)) {  //lines 105-114 check the values from the limit switches and the input for the steering servo and sends a full speed one way or another to the steering servo
     steerServo.write(600);
+    Serial.println("Left");
     delay(5);
-  } else if ((steerOutputValue > 600) && (rightSwitchValue != 0)) {
+  } else if ((steerOutputValue > 650) && (rightSwitchValue != 0)) {
     steerServo.write(2400);
+    Serial.println("Right");
     delay(5);
   } else {
     steerServo.write(STEER_STOP_VALUE);
+    Serial.println("STOP");
     delay(20);
   }
 }

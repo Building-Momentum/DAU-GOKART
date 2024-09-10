@@ -41,9 +41,6 @@ void setup() {
 
   Serial.begin(9600);  // Allows for the Serial Monitor to be used
 
-  limitSwitch1.setDebounceTime(50);  // Sets the time need to wait before the limit switches can take another input
-  limitSwitch2.setDebounceTime(50);
-
   pinMode(BRAKE_PIN_IN, INPUT);
 
   pinMode(BRAKE_RIGHT_OUTPUT_PIN, OUTPUT);  // Sets up the the Brake, Steering and Throttle pins to be used as outputs; these are wire to the siganl wires of the different servos
@@ -56,15 +53,27 @@ void loop() {
   brakeValue = pulseIn(BRAKE_PIN_IN, HIGH);
   shaftPositionValue = map(brakePositionValue, ENCODER_MIN, ENCODER_MAX, 0, SHAFT_LENGTH);
 
+  Serial.print("Brake Value: ");
+  Serial.print(brakeValue);
+  Serial.print(" ");
+  Serial.print("Shaft Position: ");
+  Serial.print(shaftPositionValue);
+  Serial.print(" ");
+  Serial.print("Brake State: ");
+
+
   if ((brakeValue < 1400) && (shaftPositionValue < BRAKE_OFF_POSITION_VALUE)) {  //lines 82-93 negotiate whether or not the break switch is turned on and engages the break
+    Serial.println("Disengaging");
     analogWrite(BRAKE_RIGHT_OUTPUT_PIN, BRAKE_STOP);
     analogWrite(BRAKE_LEFT_OUTPUT_PIN, BRAKE_SPEED);
     delay(5);
   } else if ((brakeValue > 1500) && (shaftPositionValue > BRAKE_ON_POSITION_VALUE)) {
+    Serial.println("Engaging");
     analogWrite(BRAKE_RIGHT_OUTPUT_PIN, BRAKE_SPEED);
     analogWrite(BRAKE_LEFT_OUTPUT_PIN, BRAKE_STOP);
     delay(5);
   } else {
+    Serial.println("OFF");
     analogWrite(BRAKE_RIGHT_OUTPUT_PIN, BRAKE_STOP);
     analogWrite(BRAKE_LEFT_OUTPUT_PIN, BRAKE_STOP);
     delay(5);
