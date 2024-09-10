@@ -37,10 +37,13 @@ void setup() {
 
 void loop() {
   deadmanValue = pulseIn(DEADMAN_PIN_IN, HIGH);
+  Serial.print("Dead Man Value: ");
+  Serial.println(deadManValue);
 
 
   while (deadmanValue > 1600) {
-    Serial.print("Deadman switch is pressed!");
     deadmanValue = pulseIn(DEADMAN_PIN_IN, HIGH);
+    Serial.print("Deadman switch is pressed!");
+    
   }
 }
