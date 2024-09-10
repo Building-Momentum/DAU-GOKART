@@ -80,7 +80,7 @@ void loop() {
   getValues();  // runs the function below that runs all the funtions that read the new input values
 
   throttleServo.write(X);  //sets the servo for throttle to zero to stop the kart
-  steerServo.write(X);
+  steerServo.write(Y);     // x and y here are two different variable declarations from above
 
   if (shaftPositionValue > BRAKE_ON_POSITION_VALUE) {  //runs and if else statement that will check if the brake linear acutator is engages on the break
     analogWrite(BRAKE_RIGHT_OUTPUT_PIN, BRAKE_SPEED);
@@ -110,20 +110,20 @@ void loop() {
       delay(5);
     }
 
-    if (throttleValue < XXX) {  //lines 96-103 negotiate what the value of throttle input is and sends that analog signal to the throttle servo and is linear to the throttle trigger
-      throttleServo.write(throttleOutputValue);
+    if (throttleValue < XXXX) {  //lines 96-103 negotiate what the value of throttle input is and sends that analog signal to the throttle servo and is linear to the throttle trigger
+      throttleServo.write(throttleOutputValue); // XXX is a value between 1000 and 2000
       delay(5);
     } else {
       throttleOutputValue = THROTTLE_STOP_VALUE;
       throttleServo.write(THROTTLE_STOP_VALUE);
       delay(5);
     }
-
+    
     if ((steerOutputValue < XXX) && (leftSwitchValue != X)) {  //lines 105-114 check the values from the limit switches and the input for the steering servo and sends a full speed one way or another to the steering servo
-      steerServo.write(XXXX);
+      steerServo.write(XXXX); // XXX are values between 100 and 900 and XXXx are values between 0 and 3000
       delay(5);
     } else if ((steerOutputValue > XXX) && (rightSwitchValue != X)) {
-      steerServo.write(XXXX);
+      steerServo.write(XXXX); // same as the lines 122 and 123
       delay(5);
     } else {
       steerServo.write(1500);
@@ -140,7 +140,7 @@ void getValues() { //this a function that reads all of the values from the the R
   shaftPositionValue = map(brakePositionValue, ENCODER_MIN, ENCODER_MAX, 0, SHAFT_LENGTH);
 
   throttleValue = pulseIn(THROTTLE_PIN_IN, HIGH);
-  throttleOutputValue = map(throttleValue, 1450, 960, X, XXX);
+  throttleOutputValue = map(throttleValue, 1450, 960, X, XXX); // XXX are values between 0 and 180
 
   steerValue = pulseIn(STEER_PIN_IN, HIGH);
   steerOutputValue = map(steerValue, 2100, 1000, 0, 1000);
